@@ -71,6 +71,7 @@ import com.owen.tvrecyclerview.widget.TvRecyclerView;
 import com.owen.tvrecyclerview.widget.V7GridLayoutManager;
 import com.owen.tvrecyclerview.widget.V7LinearLayoutManager;
 
+import com.github.tvbox.osc.util.UpdateUtils;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -151,6 +152,7 @@ public class HomeActivity extends BaseActivity {
             useCacheConfig = bundle.getBoolean("useCache", false);
         }
         initData();
+        UpdateUtils.checkUpdate(this);
     }
 
     // takagen99: Added to allow read string

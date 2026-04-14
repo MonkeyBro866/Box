@@ -62,6 +62,8 @@ public class HawkConfig {
     public static final String SCREEN_DISPLAY = "screen_display";
     public static final String SEARCH_FILTER_KEY = "search_filter_key";
 
+    public static final String UPDATE_LAST_TIME = "update_last_time"; // 上次提示更新时间
+
     // Live Settings
     public static final String LIVE_CHANNEL = "last_live_channel_name";
     public static final String LIVE_CHANNEL_GROUP = "last_live_channel_group_name";

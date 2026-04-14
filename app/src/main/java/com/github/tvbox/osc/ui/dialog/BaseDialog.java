@@ -22,6 +22,18 @@ public class BaseDialog extends Dialog {
         super(context, customDialogStyle);
     }
 
+    protected boolean mCancelable = true;
+
+    @Override
+    public void setCancelable(boolean flag) {
+        super.setCancelable(flag);
+        mCancelable = flag;
+    }
+
+    public boolean isCancelable() {
+        return mCancelable;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CutoutUtil.adaptCutoutAboveAndroidP(this, true);//设置刘海
