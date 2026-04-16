@@ -304,34 +304,37 @@ public class GridFragment extends BaseLazyFragment {
             @Override
             public void onChanged(AbsXml absXml) {
 //                if(mGridView != null) mGridView.requestFocus();
-                if (absXml != null && absXml.movie != null && absXml.movie.videoList != null && absXml.movie.videoList.size() > 0) {
-                    if (page == 1) {
-                        showSuccess();
-                        isLoad = true;
-                        gridAdapter.setNewData(absXml.movie.videoList);
+                if (absXml != null && absXml.movie != null && absXml.movie.videoList != null) {
+                    absXml.movie.videoList.removeIf(video -> "-1001".equals(video.id));
+                    if (absXml.movie.videoList.size() > 0) {
+                        if (page == 1) {
+                            showSuccess();
+                            isLoad = true;
+                            gridAdapter.setNewData(absXml.movie.videoList);
+                        } else {
+                            gridAdapter.addData(absXml.movie.videoList);
+                        }
+                        page++;
+                        maxPage = absXml.movie.pagecount;
+                        if (page > maxPage && maxPage != 0) {
+                            gridAdapter.loadMoreEnd();
+                            gridAdapter.setEnableLoadMore(false);
+                        } else {
+                            gridAdapter.loadMoreComplete();
+                            gridAdapter.setEnableLoadMore(true);
+                        }
                     } else {
-                        gridAdapter.addData(absXml.movie.videoList);
-                    }
-                    page++;
-                    maxPage = absXml.movie.pagecount;
-                    if (page > maxPage && maxPage!=0) {
-                        gridAdapter.loadMoreEnd();
+                        if (page == 1) {
+                            showEmpty();
+                        }
+                        if (page > maxPage && maxPage != 0) {
+                            Toast.makeText(getContext(), "没有更多了", Toast.LENGTH_SHORT).show();
+                            gridAdapter.loadMoreEnd();
+                        } else {
+                            gridAdapter.loadMoreComplete();
+                        }
                         gridAdapter.setEnableLoadMore(false);
-                    } else {
-                        gridAdapter.loadMoreComplete();
-                        gridAdapter.setEnableLoadMore(true);
                     }
-                } else {
-                    if (page == 1) {
-                        showEmpty();
-                    }
-                    if (page > maxPage && maxPage!=0) {
-                        Toast.makeText(getContext(), "没有更多了", Toast.LENGTH_SHORT).show();
-                        gridAdapter.loadMoreEnd();
-                    } else {
-                        gridAdapter.loadMoreComplete();
-                    }
-                    gridAdapter.setEnableLoadMore(false);
                 }
             }
         });

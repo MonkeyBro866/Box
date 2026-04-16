@@ -268,6 +268,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     private void initHomeHotVod(HomeHotVodAdapter adapter) {
         if (Hawk.get(HawkConfig.HOME_REC, 0) == 1) {
             if (homeSourceRec != null) {
+                homeSourceRec.removeIf(video -> "-1001".equals(video.id));
                 adapter.setNewData(homeSourceRec);
             }
             return;
@@ -284,7 +285,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             if (requestDay.equals(today)) {
                 String json = Hawk.get("home_hot", "");
                 if (!json.isEmpty()) {
-                    adapter.setNewData(loadHots(json));
+                    ArrayList<Movie.Video> videos = loadHots(json);
+                    videos.removeIf(video -> "-1001".equals(video.id));
+                    adapter.setNewData(videos);
                     return;
                 }
             }
@@ -299,7 +302,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                     mActivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            adapter.setNewData(loadHots(netJson));
+                            ArrayList<Movie.Video> videos = loadHots(netJson);
+                            videos.removeIf(video -> "-1001".equals(video.id));
+                            adapter.setNewData(videos);
                         }
                     });
                 }
