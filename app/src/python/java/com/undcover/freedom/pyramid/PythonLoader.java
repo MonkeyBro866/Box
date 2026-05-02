@@ -10,9 +10,9 @@ import com.chaquo.python.android.AndroidPlatform;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.crawler.SpiderNull;
 
-import com.github.tvbox.osc.util.OkGoHelper;
-import com.github.tvbox.osc.util.urlhttp.OKCallBack;
-import com.github.tvbox.osc.util.urlhttp.OkHttpUtil;
+import com.lookingpet.www.gjx.util.OkGoHelper;
+import com.lookingpet.www.gjx.util.urlhttp.OKCallBack;
+import com.lookingpet.www.gjx.util.urlhttp.OkHttpUtil;
 
 
 import org.json.JSONArray;

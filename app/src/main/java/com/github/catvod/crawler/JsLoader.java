@@ -3,13 +3,13 @@ package com.github.catvod.crawler;
 
 import android.util.Log;
 
-import com.github.tvbox.osc.base.App;
+import com.lookingpet.www.gjx.base.App;
 
-import com.github.tvbox.osc.util.FileUtils;
-import com.github.tvbox.osc.util.LOG;
-import com.github.tvbox.osc.util.MD5;
+import com.lookingpet.www.gjx.util.FileUtils;
+import com.lookingpet.www.gjx.util.LOG;
+import com.lookingpet.www.gjx.util.MD5;
 
-import com.github.tvbox.osc.util.js.JsSpider;
+import com.lookingpet.www.gjx.util.js.JsSpider;
 import com.lzy.okgo.OkGo;
 
 import java.io.File;
