@@ -27,6 +27,7 @@ import com.kingja.loadsir.core.LoadSir;
 import com.orhanobut.hawk.Hawk;
 import com.p2p.P2PClass;
 import com.whl.quickjs.android.QuickJSLoader;
+import com.umeng.commonsdk.UMConfigure;
 import com.yanzhenjie.andserver.AndServer;
 import com.yanzhenjie.andserver.Server;
 
@@ -91,6 +92,11 @@ public class App extends MultiDexApplication {
             AutoSizeConfig.getInstance().setScreenHeight(screenWidth);
         }
         PlayerHelper.init();
+
+        // 友盟统计初始化
+        UMConfigure.setLogEnabled(true);
+        // 注意：正式发布前需按合规要求在用户同意隐私政策后再调用 init
+        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
 
         // Delete Cache
         /*File dir = getCacheDir();

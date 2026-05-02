@@ -182,6 +182,10 @@ dependencies {
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'xpp3', module: 'xpp3'
     }
+    // 友盟统计SDK
+    implementation 'com.umeng.umsdk:common:+'//必选
+    implementation 'com.umeng.umsdk:asms:+'//必选
+
     configurations {
         configureEach {
             exclude group: 'xpp3', module: 'xpp3'
