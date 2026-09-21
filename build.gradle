@@ -38,6 +38,8 @@ allprojects {
         mavenCentral()
         gradlePluginPortal()
         maven { url "https://jitpack.io" }
+        maven { url 'https://artifact.bytedance.com/repository/pangle' }
+        maven { url "https://maven.kuaishou.com/repository/maven-public/" }
     }
 }
 

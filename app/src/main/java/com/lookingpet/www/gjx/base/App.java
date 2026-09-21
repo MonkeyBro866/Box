@@ -3,6 +3,7 @@ package com.lookingpet.www.gjx.base;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.core.os.HandlerCompat;
 import androidx.multidex.MultiDexApplication;
@@ -27,6 +28,8 @@ import com.kingja.loadsir.core.LoadSir;
 import com.orhanobut.hawk.Hawk;
 import com.p2p.P2PClass;
 import com.whl.quickjs.android.QuickJSLoader;
+import com.yufeng.AdConfig;
+import com.yufeng.YFSdk;
 import com.umeng.commonsdk.UMConfigure;
 import com.yanzhenjie.andserver.AndServer;
 import com.yanzhenjie.andserver.Server;
@@ -46,6 +49,7 @@ import me.jessyan.autosize.unit.Subunits;
  * @description:
  */
 public class App extends MultiDexApplication {
+    private static final String TAG = "App";
     private static App instance;
     private static P2PClass p;
     public static String burl;
@@ -121,6 +125,22 @@ public class App extends MultiDexApplication {
                                     .build()))
                     .build();
         }
+
+        AdConfig config = new AdConfig.Builder()
+                .appId(YFIDS.STH_PID)
+                .build();
+
+        YFSdk.initSdk(this, config, new YFSdk.InitCallback() {
+            @Override
+            public void success() {
+                Log.e(TAG, "success: AdSDK初始化成功！");
+            }
+
+            @Override
+            public void fail(int code, String msg) {
+                Log.e(TAG, "fail: AdSDK初始化失败！" + msg);
+            }
+        });
     }
 
     public static P2PClass getp2p() {

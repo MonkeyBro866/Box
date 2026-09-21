@@ -332,3 +332,68 @@
 -keep public class com.lookingpet.www.gjx.R$*{
     public static final int *;
 }
+
+#############################################
+#
+# 广告及第三方 SDK 混淆规则 (新增)
+#
+#############################################
+
+-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
+
+# 穿山甲 (Pangle)
+-keep class com.bytedance.sdk.openadsdk.** {*;}
+-keep public interface com.bytedance.sdk.openadsdk.downloadnew.** {*;}
+-keep class com.pgl.sys.ces.* {*;}
+
+# 快手 (Kwai/Kwad)
+-keep class com.kwai.**{ *; }
+-dontwarn com.kwai.**
+-dontwarn com.kwad.**
+-dontwarn com.ksad.**
+-keep class com.kwad.sdk.** { *;}
+-keep class com.ksad.download.** { *;}
+-keep class com.kwai.filedownloader.** { *;}
+
+# 百度广告 (Baidu Mobads)
+-dontwarn com.baidu.mobads.sdk.api.**
+-keep class com.baidu.mobads.** { *; }
+-keep class com.baidu.ad.magic.flute.** {*;}
+-keep class com.baidu.mobstat.forbes.** {*;}
+
+# Sigmob
+-keep class com.sigmob.sdk.**{ *;}
+-keep interface com.sigmob.sdk.**{ *;}
+-keep class com.sigmob.windad.**{ *;}
+-keep interface com.sigmob.windad.**{ *;}
+-keep class com.czhj.**{ *;}
+-keep interface com.czhj.**{ *;}
+
+# 其他广告及第三方 SDK
+-keep class com.tan.mark.**{*;}
+-keep class com.yufeng.**{*;}
+-keep class com.yufeng.*.*{*;}
+-keep class com.yufeng.*.*.*
+-dontwarn com.octopus.ad.**
+-keep class com.octopus.ad.** {*;}
+-keep class com.meishu.sdk.** { *; }
+-keep class aegon.chrome.** { *; }
+-dontwarn aegon.chrome.**
+-dontwarn com.androidquery.**
+-keep class com.androidquery.** { *;}
+-keep class com.style.widget.** {*;}
+-keep class com.component.** {*;}
+
+# 弹幕及基础组件补充
+-dontwarn tv.danmaku.**
+-keep class tv.danmaku.** { *;}
+-dontwarn androidx.**
+
+# Gson & JSON 补充
+-keep class org.json.** {*;}
+-keep class com.google.gson.reflect.TypeToken
+-keep class * extends com.google.gson.reflect.TypeToken
+-keep public class * implements java.lang.reflect.Type
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+

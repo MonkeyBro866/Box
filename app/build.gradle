@@ -7,6 +7,12 @@ def static buildTime() {
     return new Date().format("yyyyMMdd_HHmm", TimeZone.getTimeZone("GMT+08:00"))
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 android {
     compileSdk 34
 
@@ -101,6 +107,17 @@ android {
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar','*aar'], dir: 'libs')
+    implementation 'com.qq.e.union:union:4.642.1512'
+    implementation 'com.pangle_beta.cn:mediation-sdk:7.0.1.2'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
